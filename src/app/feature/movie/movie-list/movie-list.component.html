@@ -1,0 +1,25 @@
+<div>
+  <section class="heading">
+    <span class="page-title font-weight-bold font-italic">[{{ title }}]</span>
+  </section>
+  <table *ngIf="movies" class="table table-sm table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Rating</th>
+        <th>Year</th>
+        <th>Director</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let movie of movies">
+        <td>{{ movie.id }}</td>
+        <td>{{ movie.title }}</td>
+        <td>{{ movie.rating }}</td>
+        <td>{{ movie.year }}</td>
+        <td>{{ movie.director }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
