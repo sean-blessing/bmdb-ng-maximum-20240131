@@ -12,9 +12,16 @@ export class MovieListComponent implements OnInit {
   movies?: Movie[] = undefined;
 
   constructor(private movieSvc: MovieService) {}
-  
+
   ngOnInit(): void {
-    this.movies = this.movieSvc.getAllMovies();
-    console.log('List of Movies: ', this.movies);
+    this.movieSvc.getAllMovies().subscribe({
+      next: (resp) => {
+        this.movies = resp;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+      complete: () => {}
+    });
   }
 }

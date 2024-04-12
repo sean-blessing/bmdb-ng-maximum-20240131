@@ -1,0 +1,23 @@
+<div>
+  <section class="heading">
+    <span class="page-title font-weight-bold font-italic">[{{ title }}]</span>
+  </section>
+  <table *ngIf="credits" class="table table-sm table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Actor</th>
+        <th>Movie</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let credit of credits">
+        <td>{{ credit.id }}</td>
+        <td>{{ credit.actor.firstName + " " + credit.actor.lastName }}</td>
+        <td>{{ credit.movie.title + "(" + credit.movie.year + ")" }}</td>
+        <td>{{ credit.role }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

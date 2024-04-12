@@ -1,0 +1,25 @@
+<div>
+  <section class="heading">
+    <span class="page-title font-weight-bold font-italic">[{{ title }}]</span>
+  </section>
+  <table *ngIf="actors" class="table table-sm table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Gender</th>
+        <th>BirthDate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let actor of actors">
+        <td>{{ actor.id }}</td>
+        <td>{{ actor.firstName }}</td>
+        <td>{{ actor.lastName }}</td>
+        <td>{{ actor.gender }}</td>
+        <td>{{ actor.birthDate | date : "MM/dd/yyyy" }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
