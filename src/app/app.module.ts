@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MenuComponent } from './core/menu/menu.component';
 import { MovieCreateComponent } from './feature/movie/movie-create/movie-create.component';
 import { FormsModule } from '@angular/forms';
+import { MovieDetailComponent } from './feature/movie/movie-detail/movie-detail.component';
+import { MovieEditComponent } from './feature/movie/movie-edit/movie-edit.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { FormsModule } from '@angular/forms';
     ActorListComponent,
     CreditListComponent,
     MenuComponent,
-    MovieCreateComponent
+    MovieCreateComponent,
+    MovieDetailComponent,
+    MovieEditComponent
   ],
   imports: [
     BrowserModule,

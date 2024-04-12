@@ -30,6 +30,5 @@ export class MovieCreateComponent implements OnInit {
       },
       complete: () => {}
     });
-
   }
 }
