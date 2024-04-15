@@ -1,1 +1,46 @@
-<p>movie-detail works!</p>
+<div>
+    <span class="component-title">[{{ title }}]</span>
+    <p *ngIf="!movie">Loading...</p>
+    <div *ngIf="movie">
+      <main class="single">
+        <table class="table table-sm">
+          <tr>
+            <td>Id:</td>
+            <td>
+              <input [(ngModel)]="movie.id" class="rounded" type="text" disabled/>
+            </td>
+          </tr>
+          <tr>
+            <td>Title:</td>
+            <td>
+              <input [(ngModel)]="movie.title" class="rounded" type="text" disabled/>
+            </td>
+          </tr>
+          <tr>
+            <td>Rating:</td>
+            <td>
+              <input [(ngModel)]="movie.rating" class="rounded" type="text" disabled/>
+            </td>
+          </tr>
+          <tr>
+            <td>Year:</td>
+            <td>
+              <input [(ngModel)]="movie.year" class="rounded" type="number" disabled/>
+            </td>
+          </tr>
+          <tr>
+            <td>Director:</td>
+            <td>
+              <input [(ngModel)]="movie.director" class="rounded" type="text" disabled/>
+            </td>
+          </tr>
+        </table>
+      </main>
+      <span >
+        <span><a routerLink="/movie/edit/{{movie.id}}" class="btn btn-sm btn-warning">Edit</a></span>
+        <span> | <button (click)="delete()" class="btn btn-sm btn-danger">Delete</button></span>
+    </span>
+      <p *ngIf="message">{{ message }}</p>
+    </div>
+  </div>
+  

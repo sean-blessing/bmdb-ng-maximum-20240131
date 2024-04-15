@@ -18,4 +18,5 @@ export class Credit {
     this.movie = movie;
     this.role = role;
   }
+
 }

@@ -33,6 +33,7 @@ export class MovieEditComponent implements OnInit {
       error: (err) => {
         console.log('Error editing Movie: ', err);
       },
+      complete: () => {}
     });
   }
 

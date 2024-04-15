@@ -17,36 +17,18 @@ export class CreditService {
     return this.http.get(URL + '/') as Observable<Credit[]>;
   }
 
-  // getCreditById(id: number): Credit {
-  //   let m: Credit = new Credit();
-  //   for (const credit of this.credits) {
-  //     if (credit.id == id) {
-  //       m = credit;
-  //     }
-  //   }
-  //   return m;
-  // }
+  getCreditById(id: number): Observable<Credit> {
+    return this.http.get(URL + '/' +id) as Observable<Credit>;
+  }
 
-  // createCredit(credit: Credit): Credit {
-  //   this.credits.push(credit);
-  //   return credit;
-  // }
+  createCredit(credit: Credit): Observable<Credit> {
+    return this.http.post(URL, credit) as Observable<Credit>;
+  }
 
-  // updateCredit(credit: Credit): void {
-  //   console.log('updateCredit not yet implemented');
-  // }
+  updateCredit(credit: Credit): Observable<Credit> {
+    return this.http.put(URL+"/"+credit.id, credit) as Observable<Credit>;
+  }
 
-  // deleteCredit(id: number): boolean {
-  //   let success: boolean = false;
-  //   let m: Credit = this.getCreditById(id);
-  //   if (m.id != 0) {
-  //     let index: number = this.credits.indexOf(m);
-  //     this.credits.splice(index, 1);
-  //     success = true;
-  //   } else {
-  //     console.log('Error - credit id not found for id: ' + id);
-  //   }
-
-  //   return success;
-  // }
-}
+  deleteCredit(id: number): Observable<boolean> {
+    return this.http.delete(URL+"/"+id) as Observable<boolean>;
+  }}
