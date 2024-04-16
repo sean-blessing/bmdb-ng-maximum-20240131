@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/app/model/user';
 import { UserLogin } from 'src/app/model/user-login';
 import { SystemService } from 'src/app/service/system.service';
 import { UserService } from 'src/app/service/user.service';
@@ -23,7 +24,7 @@ export class UserLoginComponent implements OnInit {
   ngOnInit(): void {
     // do stuff here later
     // invalidate logged in user
-    this.systemSvc.loggedInUser = undefined;
+    this.systemSvc.loggedInUser = new User();
     // default email and pwd on login form
     this.userLogin.email = 'snblessing@gmail.com';
     this.userLogin.password = 'pwd123';
