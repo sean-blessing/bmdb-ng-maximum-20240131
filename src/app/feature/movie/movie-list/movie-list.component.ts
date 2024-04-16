@@ -13,17 +13,9 @@ export class MovieListComponent implements OnInit {
   movies?: Movie[] = undefined;
   welcomeMsg?: string = undefined;
 
-  constructor(private movieSvc: MovieService,
-              private systemSvc: SystemService
-  ) {}
+  constructor(private movieSvc: MovieService) {}
 
   ngOnInit(): void {
-    // if user is logged in, display welcome
-    if (this.systemSvc.loggedInUser != undefined) {
-      this.welcomeMsg = "Welcome, "+this.systemSvc.loggedInUser.firstname 
-          + " " + this.systemSvc.loggedInUser.lastname;
-    }
-
     this.movieSvc.getAllMovies().subscribe({
       next: (resp) => {
         this.movies = resp;
@@ -31,7 +23,7 @@ export class MovieListComponent implements OnInit {
       error: (err) => {
         console.log(err);
       },
-      complete: () => {}
+      complete: () => {},
     });
   }
 }
