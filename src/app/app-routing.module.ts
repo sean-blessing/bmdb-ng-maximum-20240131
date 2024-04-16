@@ -12,6 +12,7 @@ import { ActorEditComponent } from './feature/actor/actor-edit/actor-edit.compon
 import { CreditCreateComponent } from './feature/credit/credit-create/credit-create.component';
 import { CreditDetailComponent } from './feature/credit/credit-detail/credit-detail.component';
 import { CreditEditComponent } from './feature/credit/credit-edit/credit-edit.component';
+import { UserLoginComponent } from './feature/user/user-login/user-login.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -28,11 +29,12 @@ const routes: Routes = [
   { path: 'credit/create', component: CreditCreateComponent },
   { path: 'credit/detail/:id', component: CreditDetailComponent },
   { path: 'credit/edit/:id', component: CreditEditComponent },
+  { path: 'user/login', component: UserLoginComponent },
   { path: '**', component: MovieListComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
