@@ -12,10 +12,12 @@ export class BaseComponent implements OnInit {
   loggedInUser: User = new User();
   userName: string = '';
   message?: string = undefined;
+  // default sort column to id (assumes table has an id field)
+  sortCriteria: string = 'id';
+  // default sort criteria of ascending
+  sortOrder: string = 'asc';
 
-  constructor(private sysSvc: SystemService,
-              protected router: Router
-  ) {}
+  constructor(private sysSvc: SystemService, protected router: Router) {}
 
   ngOnInit(): void {
     this.loggedInUser = this.sysSvc.loggedInUser;
@@ -28,7 +30,7 @@ export class BaseComponent implements OnInit {
   }
 
   userLoggedIn(): boolean {
-    return (this.loggedInUser.id != 0);
+    return this.loggedInUser.id != 0;
   }
 
   checkLogin(): void {
@@ -38,5 +40,12 @@ export class BaseComponent implements OnInit {
       console.log('User not authenticated, redirecting to login');
       this.router.navigateByUrl('/user/login');
     }
+  }
+
+  sortBy(column: string): void {
+    if (column == this.sortCriteria) {
+      this.sortOrder = this.sortOrder == 'desc' ? 'asc' : 'desc';
+    }
+    this.sortCriteria = column;
   }
 }

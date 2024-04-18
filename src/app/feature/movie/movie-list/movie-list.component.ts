@@ -35,4 +35,6 @@ export class MovieListComponent extends BaseComponent implements OnInit {
       complete: () => {},
     });
   }
+
+  
 }

@@ -20,6 +20,7 @@ import { CreditDetailComponent } from './feature/credit/credit-detail/credit-det
 import { CreditCreateComponent } from './feature/credit/credit-create/credit-create.component';
 import { UserLoginComponent } from './feature/user/user-login/user-login.component';
 import { BaseComponent } from './feature/base/base.component';
+import { SortPipe } from './pipe/sort.pipe';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { BaseComponent } from './feature/base/base.component';
     CreditDetailComponent,
     CreditCreateComponent,
     UserLoginComponent,
-    BaseComponent
+    BaseComponent,
+    SortPipe
   ],
   imports: [
     BrowserModule,
