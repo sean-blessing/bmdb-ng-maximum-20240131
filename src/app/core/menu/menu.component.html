@@ -1,9 +1,9 @@
 <nav>
     <ul width="100%">
-        {{ title }}
+        <li style="color:yellow">{{title}}</li>
         <li *ngFor="let mi of menuItems" title="{{mi.tooltip}}">
             <a routerLink="{{mi.href}}">{{mi.display}}</a>
         </li>
+        <li *ngIf="welcomeMsg" class="right" style="color:yellow">{{welcomeMsg}}</li>
     </ul>
 </nav>
-<p class="pull-right">{{welcomeMsg}}</p>

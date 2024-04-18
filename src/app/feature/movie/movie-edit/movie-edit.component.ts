@@ -37,7 +37,7 @@ export class MovieEditComponent extends BaseComponent implements OnInit {
         });
       },
       error: (err) => {
-        console.log('Error editing Movie: ', err);
+        this.logMessage('Error editing Movie: '+ err);
       },
       complete: () => {}
     });
@@ -51,8 +51,7 @@ export class MovieEditComponent extends BaseComponent implements OnInit {
         this.router.navigateByUrl('/movie/list');
       },
       error: (err) => {
-        console.log('Error updating movie: ', err);
-        this.message = 'Error updating Movie.';
+        this.logMessage('Error updating movie: '+ err.message);
       },
       complete: () => {},
     });

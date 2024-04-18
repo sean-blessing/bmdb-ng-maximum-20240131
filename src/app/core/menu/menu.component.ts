@@ -8,7 +8,7 @@ import { SystemService } from 'src/app/service/system.service';
   styleUrls: ['./menu.component.css'],
 })
 export class MenuComponent implements OnInit {
-  title: string = 'Menu-Component';
+  title: string = 'BMDB';
   menuItems: MenuItem[] = [];
   welcomeMsg?: string = undefined;
 
@@ -20,13 +20,14 @@ export class MenuComponent implements OnInit {
     this.menuItems.push(new MenuItem('Actor', '/actor/list', 'Actor List'));
     this.menuItems.push(new MenuItem('Credit', '/credit/list', 'Credit List'));
 
-    // populate welcome message if we have a logged in user
+    // display login/logout component and populate welcome message if we have a logged in user
     if (this.sysSvc.loggedInUser.id != 0) {
-      this.welcomeMsg = 'Welcome, ' + this.sysSvc.loggedInUser.firstname;
       this.menuItems.push(new MenuItem('Logout', '/user/login', 'User Logout'));
+      this.welcomeMsg = 'Welcome, ' + this.sysSvc.loggedInUser.firstname;
     }
     else {
       this.menuItems.push(new MenuItem('Login', '/user/login', 'User Login'));
     }
+
   }
 }
