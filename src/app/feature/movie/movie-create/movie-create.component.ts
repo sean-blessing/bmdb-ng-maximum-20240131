@@ -2,20 +2,27 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Movie } from 'src/app/model/movie';
 import { MovieService } from 'src/app/service/movie.service';
+import { BaseComponent } from '../../base/base.component';
+import { SystemService } from 'src/app/service/system.service';
 
 @Component({
   selector: 'app-movie-create',
   templateUrl: './movie-create.component.html',
   styleUrls: ['./movie-create.component.css'],
 })
-export class MovieCreateComponent implements OnInit {
+export class MovieCreateComponent extends BaseComponent implements OnInit {
   title: string = 'Movie-Create';
   movie: Movie = new Movie();
-  message?: string = undefined;
 
-  constructor(private movieSvc: MovieService, private router: Router) {}
+  constructor(private movieSvc: MovieService,
+              sysSvc: SystemService, 
+              router: Router) {
+                super(sysSvc, router);
+              }
 
-  ngOnInit(): void {}
+  override ngOnInit(): void {
+    super.ngOnInit();
+    this.checkLogin();  }
 
   save(): void {
     // NOTE: Check for existence of movie title before save?

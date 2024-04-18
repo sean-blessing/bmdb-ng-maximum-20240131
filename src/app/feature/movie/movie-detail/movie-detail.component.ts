@@ -1,26 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Movie } from 'src/app/model/movie';
 import { MovieService } from 'src/app/service/movie.service';
+import { BaseComponent } from '../../base/base.component';
+import { SystemService } from 'src/app/service/system.service';
 
 @Component({
   selector: 'app-movie-detail',
   templateUrl: './movie-detail.component.html',
   styleUrls: ['./movie-detail.component.css'],
 })
-export class MovieDetailComponent {
+export class MovieDetailComponent extends BaseComponent implements OnInit {
   title: string = 'Movie Detail';
   movie: Movie = new Movie();
   movieId: number = 0;
-  message?: string = undefined;
 
   constructor(
     private movieSvc: MovieService,
-    private router: Router,
+    sysSvc: SystemService,
+    router: Router,
     private route: ActivatedRoute
-  ) {}
+  ) {
+    super(sysSvc, router);
+  }
 
-  ngOnInit() {
+  override ngOnInit() {
+    super.ngOnInit();
+    this.checkLogin();
     // get the id from the url
     this.route.params.subscribe({
       next: (parms) => {

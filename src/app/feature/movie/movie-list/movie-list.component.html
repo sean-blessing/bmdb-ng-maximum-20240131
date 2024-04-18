@@ -2,7 +2,7 @@
 <div>
   <section class="heading">
     <span class="page-title font-weight-bold font-italic">[{{ title }}]</span>
-    <a routerLink="/movie/create">
+    <a *ngIf="adminUser" routerLink="/movie/create">
       <img width="20" height="20" src="assets/add-icon.png" title="Add New" />
     </a>
   </section>
@@ -45,4 +45,5 @@
       </tr>
     </tbody>
   </table>
+  <p *ngIf="message">{{ message }}</p>
 </div>

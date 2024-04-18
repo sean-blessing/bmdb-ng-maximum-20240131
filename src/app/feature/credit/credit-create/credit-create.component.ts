@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actor } from 'src/app/model/actor';
 import { Credit } from 'src/app/model/credit';
@@ -6,27 +6,31 @@ import { Movie } from 'src/app/model/movie';
 import { ActorService } from 'src/app/service/actor.service';
 import { CreditService } from 'src/app/service/credit.service';
 import { MovieService } from 'src/app/service/movie.service';
+import { BaseComponent } from '../../base/base.component';
+import { SystemService } from 'src/app/service/system.service';
 
 @Component({
   selector: 'app-credit-create',
   templateUrl: './credit-create.component.html',
   styleUrls: ['./credit-create.component.css'],
 })
-export class CreditCreateComponent {
+export class CreditCreateComponent extends BaseComponent implements OnInit{
   title: string = 'Credit-Credit';
   credit: Credit = new Credit();
   movies: Movie[] = [];
   actors: Actor[] = [];
-  message?: string = undefined;
 
   constructor(
     private creditSvc: CreditService,
     private movieSvc: MovieService,
     private actorSvc: ActorService,
-    private router: Router
-  ) {}
+    sysSvc: SystemService,
+    router: Router
+  ) {
+    super(sysSvc, router);
+  }
 
-  ngOnInit(): void {
+  override ngOnInit(): void {
     this.movieSvc.getAllMovies().subscribe({
       next: (resp) => {
         this.movies = resp;

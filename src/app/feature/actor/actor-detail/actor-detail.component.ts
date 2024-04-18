@@ -1,26 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Actor } from 'src/app/model/actor';
 import { ActorService } from 'src/app/service/actor.service';
+import { BaseComponent } from '../../base/base.component';
+import { SystemService } from 'src/app/service/system.service';
 
 @Component({
   selector: 'app-actor-detail',
   templateUrl: './actor-detail.component.html',
   styleUrls: ['./actor-detail.component.css'],
 })
-export class ActorDetailComponent {
+export class ActorDetailComponent extends BaseComponent implements OnInit{
   title: string = 'Actor Detail';
   actor: Actor = new Actor();
   actorId: number = 0;
-  message?: string = undefined;
 
   constructor(
     private actorSvc: ActorService,
-    private router: Router,
+    sysSvc: SystemService,
+    router: Router,
     private route: ActivatedRoute
-  ) {}
+  ) {
+    super(sysSvc, router);
+  }
 
-  ngOnInit() {
+  override ngOnInit() {
+    super.ngOnInit();
+    this.checkLogin();
     // get the id from the url
     this.route.params.subscribe({
       next: (parms) => {

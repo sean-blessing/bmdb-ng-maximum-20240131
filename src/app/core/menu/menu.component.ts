@@ -23,6 +23,10 @@ export class MenuComponent implements OnInit {
     // populate welcome message if we have a logged in user
     if (this.sysSvc.loggedInUser.id != 0) {
       this.welcomeMsg = 'Welcome, ' + this.sysSvc.loggedInUser.firstname;
+      this.menuItems.push(new MenuItem('Logout', '/user/login', 'User Logout'));
+    }
+    else {
+      this.menuItems.push(new MenuItem('Login', '/user/login', 'User Login'));
     }
   }
 }

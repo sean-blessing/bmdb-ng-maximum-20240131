@@ -4,6 +4,7 @@ import { User } from 'src/app/model/user';
 import { UserLogin } from 'src/app/model/user-login';
 import { SystemService } from 'src/app/service/system.service';
 import { UserService } from 'src/app/service/user.service';
+import { BaseComponent } from '../../base/base.component';
 
 @Component({
   selector: 'app-user-login',
@@ -17,14 +18,14 @@ export class UserLoginComponent implements OnInit {
 
   constructor(
     private userSvc: UserService,
-    private systemSvc: SystemService,
+    private sysSvc: SystemService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
     // do stuff here later
     // invalidate logged in user
-    this.systemSvc.loggedInUser = new User();
+    this.sysSvc.loggedInUser = new User();
     // default email and pwd on login form
     this.userLogin.email = 'snblessing@gmail.com';
     this.userLogin.password = 'pwd123';
@@ -33,7 +34,8 @@ export class UserLoginComponent implements OnInit {
   login() {
     this.userSvc.login(this.userLogin).subscribe({
       next: (resp) => {
-        this.systemSvc.loggedInUser = resp;
+        this.sysSvc.loggedInUser = resp;
+        console.log('user set in sysSvc: ' + this.sysSvc.loggedInUser.email);
         this.router.navigateByUrl('/home');
       },
       error: (err) => {

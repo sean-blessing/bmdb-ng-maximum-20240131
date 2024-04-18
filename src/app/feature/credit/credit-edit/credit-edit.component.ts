@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Actor } from 'src/app/model/actor';
 import { Credit } from 'src/app/model/credit';
@@ -6,29 +6,33 @@ import { Movie } from 'src/app/model/movie';
 import { ActorService } from 'src/app/service/actor.service';
 import { CreditService } from 'src/app/service/credit.service';
 import { MovieService } from 'src/app/service/movie.service';
+import { BaseComponent } from '../../base/base.component';
+import { SystemService } from 'src/app/service/system.service';
 
 @Component({
   selector: 'app-credit-edit',
   templateUrl: './credit-edit.component.html',
   styleUrls: ['./credit-edit.component.css'],
 })
-export class CreditEditComponent {
+export class CreditEditComponent extends BaseComponent implements OnInit{
   title: string = 'Credit-Edit';
   credit: Credit = new Credit();
   creditId: number = 0;
   movies: Movie[] = [];
   actors: Actor[] = [];
-  message?: string = undefined;
 
   constructor(
     private creditSvc: CreditService,
     private movieSvc: MovieService,
     private actorSvc: ActorService,
-    private router: Router,
+    sysSvc: SystemService,
+    router: Router,
     private route: ActivatedRoute
-  ) {}
+  ) {
+    super(sysSvc, router);
+  }
 
-  ngOnInit(): void {
+  override ngOnInit(): void {
     this.route.params.subscribe({
       next: (parms) => {
         this.creditId = parms['id'];
