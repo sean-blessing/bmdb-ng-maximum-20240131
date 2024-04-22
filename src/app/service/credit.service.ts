@@ -9,16 +9,14 @@ const URL: string = 'http://localhost:8080/api/credits';
   providedIn: 'root',
 })
 export class CreditService {
-
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   getAllCredits(): Observable<Credit[]> {
     return this.http.get(URL + '/') as Observable<Credit[]>;
   }
 
   getCreditById(id: number): Observable<Credit> {
-    return this.http.get(URL + '/' +id) as Observable<Credit>;
+    return this.http.get(URL + '/' + id) as Observable<Credit>;
   }
 
   createCredit(credit: Credit): Observable<Credit> {
@@ -26,9 +24,14 @@ export class CreditService {
   }
 
   updateCredit(credit: Credit): Observable<Credit> {
-    return this.http.put(URL+"/"+credit.id, credit) as Observable<Credit>;
+    return this.http.put(URL + '/' + credit.id, credit) as Observable<Credit>;
   }
 
   deleteCredit(id: number): Observable<boolean> {
-    return this.http.delete(URL+"/"+id) as Observable<boolean>;
-  }}
+    return this.http.delete(URL + '/' + id) as Observable<boolean>;
+  }
+
+  getCreditsForMovieId(movieId: number): Observable<Credit[]> {
+    return this.http.get(URL + '/by-movie/' + movieId) as Observable<Credit[]>;
+  }
+}

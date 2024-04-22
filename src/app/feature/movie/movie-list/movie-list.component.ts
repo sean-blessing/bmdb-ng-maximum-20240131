@@ -24,7 +24,6 @@ export class MovieListComponent extends BaseComponent implements OnInit {
   override ngOnInit(): void {
     super.ngOnInit();
     this.checkLogin();
-    console.log('Logged In User: ' + this.loggedInUser.email);
     this.movieSvc.getAllMovies().subscribe({
       next: (resp) => {
         this.movies = resp;

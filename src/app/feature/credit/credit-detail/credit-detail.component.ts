@@ -8,9 +8,9 @@ import { SystemService } from 'src/app/service/system.service';
 @Component({
   selector: 'app-credit-detail',
   templateUrl: './credit-detail.component.html',
-  styleUrls: ['./credit-detail.component.css']
+  styleUrls: ['./credit-detail.component.css'],
 })
-export class CreditDetailComponent extends BaseComponent implements OnInit{
+export class CreditDetailComponent extends BaseComponent implements OnInit {
   title: string = 'Credit Detail';
   credit: Credit = new Credit();
   creditId: number = 0;
@@ -36,7 +36,7 @@ export class CreditDetailComponent extends BaseComponent implements OnInit{
         });
       },
       error: (err) => {
-        console.log('Error editing Credit: ', err);
+        this.logMessage('Error editing Credit: ' + err.message);
       },
       complete: () => {},
     });
@@ -46,14 +46,13 @@ export class CreditDetailComponent extends BaseComponent implements OnInit{
     this.creditSvc.deleteCredit(this.creditId).subscribe({
       next: (resp) => {
         if (resp == false) {
-          console.log('CreditDetailComponent - error deleting credit.');
-          this.message = 'CreditDetailComponent - error deleting credit.';
+          this.logMessage('CreditDetailComponent - error deleting credit. ');
         } else {
           this.router.navigateByUrl('credit/list');
         }
       },
       error: (err) => {
-        console.log('Error deleting credit: ' + err.message);
+        this.logMessage('Error deleting credit: ' + err.message);
       },
       complete: () => {},
     });

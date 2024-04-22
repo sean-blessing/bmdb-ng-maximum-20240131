@@ -1,0 +1,53 @@
+<app-menu></app-menu>
+<div>
+  <section class="heading">
+    <span class="page-title font-weight-bold font-italic">[{{ title }}]</span>
+    <span
+      style="
+        float: right;
+        padding-right: 30px;
+        font-style: italic;
+        font-weight: bold;
+      "
+      >Hello, {{ userName }}</span
+    >
+  </section>
+  <table *ngIf="movie" class="table table-sm table-striped">
+    <thead>
+      <tr>
+        <th>Title (Year)</th>
+        <th>Rating</th>
+        <th>Director</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ movie.title }} ({{ movie.year }})</td>
+        <td>{{ movie.rating }}</td>
+        <td>{{ movie.director }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <section class="heading">
+    <span class="page-title font-weight-bold font-italic"
+      >[{{ creditTitle }}]</span
+    >
+    <!-- <a routerLink="/line-item/create/{{ request.id }}"
+      ><img width="20" height="20" src="assets/add-icon.png" title="Add New"
+    /></a> -->
+  </section>
+  <table class="table table-sm table-striped">
+    <thead>
+      <tr>
+        <th>Actor</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="credits" class="table table-sm table-striped">
+      <tr *ngFor="let credit of credits">
+        <td>{{ credit.actor.lastName }}, {{ credit.actor.firstName }}</td>
+        <td>{{ credit.role }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

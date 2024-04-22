@@ -35,7 +35,6 @@ export class UserLoginComponent implements OnInit {
     this.userSvc.login(this.userLogin).subscribe({
       next: (resp) => {
         this.sysSvc.loggedInUser = resp;
-        console.log('user set in sysSvc: ' + this.sysSvc.loggedInUser.email);
         this.router.navigateByUrl('/home');
       },
       error: (err) => {

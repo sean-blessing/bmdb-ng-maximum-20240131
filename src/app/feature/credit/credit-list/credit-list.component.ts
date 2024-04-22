@@ -27,7 +27,7 @@ export class CreditListComponent extends BaseComponent implements OnInit {
         this.credits = resp;
       },
       error: (err) => {
-        console.log(err);
+        this.logMessage("CreditList Error getting all credits: "+err.message);
       },
       complete: () => {}
     });

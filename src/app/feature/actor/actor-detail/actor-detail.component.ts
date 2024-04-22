@@ -48,16 +48,13 @@ export class ActorDetailComponent extends BaseComponent implements OnInit{
     this.actorSvc.deleteActor(this.actorId).subscribe({
       next: (resp) => {
         if (resp == false) {
-          console.log('ActorDetailComponent - error deleting actor.');
-          this.message = 'ActorDetailComponent - error deleting actor.';
+          this.logMessage('ActorDetailComponent - error deleting actor');
         } else {
           this.router.navigateByUrl('actor/list');
         }
       },
       error: (err) => {
-        console.log('Error deleting actor: ' + err.message);
-        this.message =
-          'ActorDetailComponent - error deleting actor: ' + err.message;
+        this.logMessage('Error deleting actor: ' + err.message);
       },
       complete: () => {},
     });

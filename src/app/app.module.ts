@@ -21,6 +21,7 @@ import { CreditCreateComponent } from './feature/credit/credit-create/credit-cre
 import { UserLoginComponent } from './feature/user/user-login/user-login.component';
 import { BaseComponent } from './feature/base/base.component';
 import { SortPipe } from './pipe/sort.pipe';
+import { MovieCreditsComponent } from './feature/movie/movie-credits/movie-credits.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { SortPipe } from './pipe/sort.pipe';
     CreditCreateComponent,
     UserLoginComponent,
     BaseComponent,
-    SortPipe
+    SortPipe,
+    MovieCreditsComponent
   ],
   imports: [
     BrowserModule,

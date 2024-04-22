@@ -18,7 +18,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let movie of movies | sort:sortCriteria:sortOrder">
+      <tr *ngFor="let movie of movies | sort : sortCriteria : sortOrder">
         <td>{{ movie.id }}</td>
         <td>{{ movie.title }}</td>
         <td>{{ movie.rating }}</td>
@@ -39,6 +39,14 @@
               height="20"
               src="assets/pencil-icon.png"
               title="Edit Movie"
+            />
+          </a>
+          <a routerLink="/movie/credits/{{ movie.id }}">
+            <img
+              width="20"
+              height="20"
+              src="assets/lines.png"
+              title="Movie Credits"
             />
           </a>
         </td>

@@ -14,9 +14,10 @@ export class ActorListComponent extends BaseComponent implements OnInit {
   title: string = 'Actor-List';
   actors?: Actor[] = undefined;
 
-  constructor(private actorSvc: ActorService,
-              sysSvc: SystemService,
-              router: Router
+  constructor(
+    private actorSvc: ActorService,
+    sysSvc: SystemService,
+    router: Router
   ) {
     super(sysSvc, router);
   }
@@ -29,7 +30,7 @@ export class ActorListComponent extends BaseComponent implements OnInit {
         this.actors = resp;
       },
       error: (err) => {
-        console.log(err);
+        this.logMessage('ActorList error: gettingAllActors: ' + err.message);
       },
       complete: () => {},
     });

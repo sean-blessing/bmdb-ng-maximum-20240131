@@ -8,9 +8,9 @@ import { SystemService } from 'src/app/service/system.service';
 @Component({
   selector: 'app-actor-edit',
   templateUrl: './actor-edit.component.html',
-  styleUrls: ['./actor-edit.component.css']
+  styleUrls: ['./actor-edit.component.css'],
 })
-export class ActorEditComponent extends BaseComponent implements OnInit{
+export class ActorEditComponent extends BaseComponent implements OnInit {
   title: string = 'Actor-Edit';
   actor: Actor = new Actor();
   actorId: number = 0;
@@ -37,7 +37,7 @@ export class ActorEditComponent extends BaseComponent implements OnInit{
         });
       },
       error: (err) => {
-        console.log('Error editing Actor: ', err);
+        this.logMessage('Error editing Actor: ' + err);
       },
     });
   }
@@ -50,8 +50,7 @@ export class ActorEditComponent extends BaseComponent implements OnInit{
         this.router.navigateByUrl('/actor/list');
       },
       error: (err) => {
-        console.log('Error updating actor: ', err);
-        this.message = 'Error updating Actor.';
+        this.logMessage('Error updating actor: ' + err.message);
       },
       complete: () => {},
     });

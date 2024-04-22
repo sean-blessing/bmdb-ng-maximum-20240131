@@ -36,7 +36,7 @@ export class CreditCreateComponent extends BaseComponent implements OnInit{
         this.movies = resp;
       },
       error: (err) => {
-        console.log('Credit Create - error getting movies.');
+        this.logMessage('Credit Create - error getting movies: '+err.message);
       },
       complete: () => {},
     });
@@ -45,7 +45,7 @@ export class CreditCreateComponent extends BaseComponent implements OnInit{
         this.actors = resp;
       },
       error: (err) => {
-        console.log('Credit Create - error getting actors.');
+        this.logMessage('Credit Create - error getting actors: '+err.message);
       },
       complete: () => {},
     });
@@ -59,8 +59,7 @@ export class CreditCreateComponent extends BaseComponent implements OnInit{
         this.router.navigateByUrl('/credit/list');
       },
       error: (err) => {
-        console.log('Error creating credit: ', err);
-        this.message = 'Error creating Credit.';
+        this.logMessage('Error creating credit: '+ err.message);
       },
       complete: () => {},
     });

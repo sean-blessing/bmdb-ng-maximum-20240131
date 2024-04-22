@@ -32,8 +32,7 @@ export class MovieCreateComponent extends BaseComponent implements OnInit {
         this.router.navigateByUrl('/movie/list');
       },
       error: (err) => {
-        console.log("Error creating movie: ", err);
-        this.message = "Error creating Movie.";
+        this.logMessage("Error creating movie: "+err.message);
       },
       complete: () => {}
     });

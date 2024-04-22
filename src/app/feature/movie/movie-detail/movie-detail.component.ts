@@ -36,13 +36,13 @@ export class MovieDetailComponent extends BaseComponent implements OnInit {
             this.movie = parms;
           },
           error: (err) => {
-            console.log('Error getting movie by id: ', err);
+            this.logMessage('Error getting movie by id: ' + err.message);
           },
-          complete: () => {}
+          complete: () => {},
         });
       },
       error: (err) => {
-        console.log('Error getting id from url: ', err);
+        console.log('Error getting id from url: ' + err.message);
       },
       complete: () => {},
     });
@@ -52,18 +52,15 @@ export class MovieDetailComponent extends BaseComponent implements OnInit {
     this.movieSvc.deleteMovie(this.movieId).subscribe({
       next: (resp) => {
         if (resp == false) {
-          console.log('MovieDetailComponent - error deleting movie.');
-          this.message = 'MovieDetailComponent - error deleting movie.';
+          this.logMessage('MovieDetailComponent - error deleting movie. ');
         } else {
           this.router.navigateByUrl('movie/list');
         }
       },
       error: (err) => {
-        console.log(
+        this.logMessage(
           'MovieDetailComponent - Error deleting movie: ' + err.message
         );
-        this.message =
-          'MovieDetailComponent - error deleting movie: ' + err.message;
       },
       complete: () => {},
     });

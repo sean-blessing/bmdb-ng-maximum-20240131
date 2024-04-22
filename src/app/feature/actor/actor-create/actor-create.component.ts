@@ -34,8 +34,7 @@ export class ActorCreateComponent extends BaseComponent implements OnInit {
         this.router.navigateByUrl('/actor/list');
       },
       error: (err) => {
-        console.log('Error creating actor: ', err);
-        this.message = 'Error creating Actor.';
+        this.logMessage('Error creating actor: '+ err.message);
       },
       complete: () => {},
     });

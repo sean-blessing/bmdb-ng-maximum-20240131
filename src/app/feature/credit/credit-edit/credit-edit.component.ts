@@ -14,7 +14,7 @@ import { SystemService } from 'src/app/service/system.service';
   templateUrl: './credit-edit.component.html',
   styleUrls: ['./credit-edit.component.css'],
 })
-export class CreditEditComponent extends BaseComponent implements OnInit{
+export class CreditEditComponent extends BaseComponent implements OnInit {
   title: string = 'Credit-Edit';
   credit: Credit = new Credit();
   creditId: number = 0;
@@ -43,7 +43,7 @@ export class CreditEditComponent extends BaseComponent implements OnInit{
         });
       },
       error: (err) => {
-        console.log('Error editing Credit: ', err);
+        this.logMessage('Error editing Credit: ' + err.message);
       },
       complete: () => {},
     });
@@ -52,7 +52,7 @@ export class CreditEditComponent extends BaseComponent implements OnInit{
         this.movies = resp;
       },
       error: (err) => {
-        console.log('Credit Create - error getting movies.');
+        this.logMessage('Credit Create - error getting movies: ' + err.message);
       },
       complete: () => {},
     });
@@ -61,7 +61,7 @@ export class CreditEditComponent extends BaseComponent implements OnInit{
         this.actors = resp;
       },
       error: (err) => {
-        console.log('Credit Create - error getting actors.');
+        this.logMessage('Credit Create - error getting actors: ' + err.message);
       },
       complete: () => {},
     });
@@ -75,8 +75,7 @@ export class CreditEditComponent extends BaseComponent implements OnInit{
         this.router.navigateByUrl('/credit/list');
       },
       error: (err) => {
-        console.log('Error updating credit: ', err);
-        this.message = 'Error updating Credit.';
+        this.logMessage('Error updating credit: ' + err.message);
       },
       complete: () => {},
     });
